@@ -2,6 +2,7 @@ let generateButton = document.getElementById("generate");
 //Code snippets
 let inputTags =document.querySelector("#inputTags");
 let tags=document.querySelector("#tags");
+//inputTagsValue=document.querySelector("#inputTags").value;
 
 //SC number
 let inputSC = document.querySelector("#inputSC");
@@ -12,12 +13,19 @@ let expiryDate=document.querySelector("#expiryDate");
 //End of SC number
 generateButton.addEventListener("mousedown", function(){
 
-    let res=tags.split("<noscript>")[1];
-res=res.replace('"</noscript> <!-- End of event snippet: Please do not remove -->"', " ");
-console.log(res);
+let res=document.querySelector("#inputTags").value.split('<img src=""');
+res=res[1].split("?");
+console.log(res[0]);
+
+//Floodlight
+let imgCreate= "var pxl = document.createElement('IMG'); pxl.setAttribute('src','";
+let tagURL=res[0];
+let tagAttr = "?'); pxl.setAttribute('width', '1'); pxl.setAttribute('height', '1'); pxl.setAttribute('alt', ''); document.body.appendChild(pxl); console.log('pixel fires');"
+
 
 //Input tag
-tags.innerHTML=inputTags.value;
+document.querySelector("#inputTags").value.split('" "');
+tags.innerHTML="[\""+imgCreate+tagURL+tagAttr+"\"]";
 tags.style.color="red";
 tags.style.fontWeight ="900";
 //End of input tag
